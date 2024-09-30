@@ -1,0 +1,88 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+    <div class="flex flex-col justify-center p-8 md:p-14">
+      <span class="mb-3 text-4xl font-bold text-gray-800">Edit Question</span>
+      <span class="font-light text-gray-600 mb-8">Update the details of the question below.</span>
+
+      <form (ngSubmit)="updateQuestion()">
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Question</span>
+          <input
+            type="text"
+            [(ngModel)]="questionText"
+            name="question"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Enter question"
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Option 1</span>
+          <input
+            type="text"
+            [(ngModel)]="option1"
+            name="option1"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Option 1"
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Option 2</span>
+          <input
+            type="text"
+            [(ngModel)]="option2"
+            name="option2"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Option 2"
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Option 3</span>
+          <input
+            type="text"
+            [(ngModel)]="option3"
+            name="option3"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Option 3"
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Option 4</span>
+          <input
+            type="text"
+            [(ngModel)]="option4"
+            name="option4"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Option 4"
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Correct Option</span>
+          <select
+            [(ngModel)]="correctOption"
+            name="correctOption"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            required
+          >
+            <option value="" disabled>Select the correct option</option>
+            <option value="option1">Option 1</option>
+            <option value="option2">Option 2</option>
+            <option value="option3">Option 3</option>
+            <option value="option4">Option 4</option>
+          </select>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-cyan-500 text-white p-2 rounded-lg mb-6 hover:bg-cyan-600"
+        >
+          Update Question
+        </button>
+      </form>
+
+    </div>
+  </div>
+</div>

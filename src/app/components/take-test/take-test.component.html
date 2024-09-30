@@ -1,0 +1,27 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl p-10 md:flex-row md:space-y-0">
+    <!-- Form Section -->
+    <div class="flex flex-col justify-center p-8 md:p-14">
+      <h2 class="text-3xl font-bold text-gray-800 mb-6">Enter Test Code</h2>
+      <p class="text-gray-600 font-light mb-8">Please enter the test code below to start your test.</p>
+
+      <!-- Input Field -->
+      <div class="flex flex-col space-y-4">
+        <input
+          type="text"
+          [(ngModel)]="testCode"
+          placeholder="Enter Test Code"
+          class="w-full p-4 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500 focus:outline-none focus:border-cyan-500"
+        />
+
+        <!-- Start Test Button -->
+        <button
+          (click)="startTest()"
+          class="w-full bg-cyan-500 text-white font-semibold py-3 rounded-lg hover:bg-cyan-600 transition duration-200"
+        >
+          Start Test
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<div class="bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white shadow-2xl rounded-r-2xl p-6">
+      <div class="flex items-center justify-center">
+        <img src="logo.png" alt="Logo" class="w-24 h-24 rounded-full" />
+      </div>
+      <nav class="mt-10">
+        <!-- Navigation Buttons -->
+        <button (click)="navigateTo('profile')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Profile</span>
+        </button>
+
+        <!-- New Button to Consult Created Tests -->
+        <button *ngIf="userRole === 'teacher' || userRole === 'admin'" (click)="navigateTo('consult-tests')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Consult Created Tests</span>
+        </button>
+
+        <!-- Button to Take a Test -->
+        <button (click)="navigateTo('take-test')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Take a Test</span>
+        </button>
+
+        <!-- New Button to Check Passed Tests -->
+        <button (click)="navigateTo('passed-tests')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Check Passed Tests</span>
+        </button>
+
+        <!-- Admin-Specific Button to Manage Users -->
+        <button *ngIf="userRole === 'admin'" (click)="navigateTo('manage-users')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Manage Users</span>
+        </button>
+        <!-- Button to Manage Tests -->
+      <button *ngIf="userRole === 'admin'" (click)="navigateTo('manage-tests')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+        <span class="font-medium text-gray-700">Manage Tests</span>
+      </button>
+      <button *ngIf="userRole === 'admin'" (click)="navigateTo('check-requests')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+        <span class="font-medium text-gray-700">Check requests</span>
+      </button>
+      <button *ngIf="userRole === 'admin'" (click)="navigateTo('check-reports')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+        <span class="font-medium text-gray-700">Check reports</span>
+      </button>
+
+
+        <!-- Logout Button -->
+        <button (click)="navigateTo('logout')" class="block w-full text-left py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+          <span class="font-medium text-gray-700">Logout</span>
+        </button>
+      </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 text-gray-800">
+      <!-- Router outlet for dynamic content -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

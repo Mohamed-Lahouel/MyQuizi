@@ -1,0 +1,28 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col w-full max-w-2xl bg-white shadow-2xl rounded-2xl p-8">
+    <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Check Requests</h1>
+    <p class="text-lg font-light text-gray-600 mb-8 text-center">Review and approve or reject requests</p>
+
+    <!-- Display error message -->
+    <p *ngIf="errorMessage" class="text-center text-red-500 mb-4">{{ errorMessage }}</p>
+
+    <!-- Display requests -->
+    <div *ngIf="requests.length === 0" class="text-center text-gray-600 mb-4">
+      No requests to display
+    </div>
+
+    <ul *ngIf="requests.length > 0" class="space-y-4">
+      <li *ngFor="let request of requests" class="border border-gray-300 p-4 rounded-md">
+        <!-- Display username instead of user ID -->
+        <p class="font-semibold">Username: {{ request.username }}</p>
+        <p class="font-light">Status: {{ request.status }}</p>
+        <button (click)="approveRequest(request.idRequest)" class="bg-green-500 text-white p-2 rounded mt-2 hover:bg-green-600">
+          Approve
+        </button>
+        <button (click)="rejectRequest(request.idRequest)" class="bg-red-500 text-white p-2 rounded mt-2 hover:bg-red-600">
+          Reject
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

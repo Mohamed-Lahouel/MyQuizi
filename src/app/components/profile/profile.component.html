@@ -1,0 +1,63 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col w-full max-w-2xl bg-white shadow-2xl rounded-2xl p-8">
+    <h1 class="text-4xl font-bold text-gray-800 mb-6 text-center">Profile Page</h1>
+    <p class="text-lg font-light text-gray-600 mb-8 text-center">Update your account details below</p>
+
+    <!-- Display role request status message -->
+    <p *ngIf="requestStatus" class="text-center text-red-500 mb-4">{{ requestStatus }}</p>
+
+    <form (ngSubmit)="updateProfile()">
+      <!-- Username Field -->
+      <div class="py-4">
+        <label for="username" class="block mb-2 text-md text-gray-700">Username</label>
+        <input
+          type="text"
+          id="username"
+          [(ngModel)]="username"
+          name="username"
+          class="w-full p-4 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+          required
+        />
+      </div>
+      <!-- Password Field -->
+      <div class="py-4">
+        <label for="password" class="block mb-2 text-md text-gray-700">New Password</label>
+        <input
+          type="password"
+          id="password"
+          [(ngModel)]="password"
+          name="password"
+          class="w-full p-4 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+        />
+      </div>
+      <!-- Confirm Password Field -->
+      <div class="py-4">
+        <label for="confirm_password" class="block mb-2 text-md text-gray-700">Confirm New Password</label>
+        <input
+          type="password"
+          id="confirm_password"
+          [(ngModel)]="confirmPassword"
+          name="confirmPassword"
+          class="w-full p-4 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+        />
+      </div>
+      <!-- Request Button -->
+      <div class="py-4">
+        <button
+          type="button"
+          (click)="submitRequest()"
+          class="w-full bg-cyan-500 text-white p-4 rounded-lg mt-6 hover:bg-cyan-600"
+        >
+          Request to be Teacher
+        </button>
+      </div>
+      <!-- Save Changes Button -->
+      <button
+        type="submit"
+        class="w-full bg-cyan-500 text-white p-4 rounded-lg mt-6 hover:bg-cyan-600"
+      >
+        Save Changes
+      </button>
+    </form>
+  </div>
+</div>

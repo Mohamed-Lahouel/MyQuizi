@@ -1,0 +1,78 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+    <!-- Right side -->
+    <div class="relative">
+      <img
+        src="image.png"
+        alt="img"
+        class="w-[400px] h-full hidden rounded-l-2xl md:block object-cover"
+      />
+      <!-- Text on image (optional) -->
+    </div>
+    <!-- Left side -->
+    <div class="flex flex-col justify-center p-8 md:p-14">
+      <span class="mb-3 text-4xl font-bold text-gray-800">Sign Up</span>
+      <span class="font-light text-gray-600 mb-8">Create an account to get started</span>
+      <form (ngSubmit)="onSubmit(signupForm)" #signupForm="ngForm">
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Username</span>
+          <input
+            type="text"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            name="username"
+            id="username"
+            ngModel
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Email</span>
+          <input
+            type="email"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            name="email"
+            id="email"
+            ngModel
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Password</span>
+          <input
+            type="password"
+            name="password"
+            id="password"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            ngModel
+            required
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Confirm Password</span>
+          <input
+            type="password"
+            name="confirm_password"
+            id="confirm_password"
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            ngModel
+            required
+          />
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-cyan-500 text-white p-2 rounded-lg mb-6 hover:bg-cyan-600"
+        >
+          Sign Up
+        </button>
+      </form>
+      <div class="text-center text-gray-500">
+        Already have an account?
+        <a
+          (click)="navigateToLogin()"
+          class="font-bold text-cyan-500 hover:text-cyan-600 cursor-pointer"
+        >
+Log in        </a>
+      </div>
+    </div>
+  </div>
+</div>

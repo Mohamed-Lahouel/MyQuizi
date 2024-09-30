@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4">Report Test</h1>
+    <form (ngSubmit)="submitReport(reportForm)" #reportForm="ngForm">
+      <div class="mb-4">
+        <label for="reason" class="block text-gray-700 font-bold mb-2">Reason:</label>
+        <select
+          id="reason"
+          [(ngModel)]="report.reason"
+          name="reason"
+          required
+          class="p-2 border border-gray-300 rounded-lg w-full"
+        >
+          <option value="" disabled>Select a reason</option>
+          <option *ngFor="let reason of reasons" [value]="reason">{{ reason }}</option>
+        </select>
+        <div *ngIf="reportForm.submitted && !report.reason" class="text-red-500 mt-1">Reason is required.</div>
+      </div>
+      <div class="mb-4">
+        <label for="description" class="block text-gray-700 font-bold mb-2">Description:</label>
+        <textarea
+          id="description"
+          [(ngModel)]="report.description"
+          name="description"
+          required
+          class="p-2 border border-gray-300 rounded-lg w-full h-32 resize-none"
+        ></textarea>
+        <div *ngIf="reportForm.submitted && !report.description" class="text-red-500 mt-1">Description is required.</div>
+      </div>
+      <button type="submit" class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600">Submit Report</button>
+    </form>
+  </div>
+</div>

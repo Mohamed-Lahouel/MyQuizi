@@ -1,0 +1,33 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <h1 class="text-2xl font-bold mb-4">Check Reports</h1>
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="border-b">
+          <th class="p-2 text-left">Test Title</th>
+          <th class="p-2 text-left">Username</th>
+          <th class="p-2 text-left">Reason</th>
+          <th class="p-2 text-left">Description</th>
+          <th class="p-2 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let report of reports" class="border-b">
+          <td class="p-2">{{ report.testTitle }}</td>
+          <td class="p-2">{{ report.username }}</td>
+          <td class="p-2">{{ report.reason }}</td>
+          <td class="p-2">{{ report.description }}</td>
+          <td class="p-2">
+            <button
+              (click)="deleteTest(report.testId)"
+              class="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600"
+            >
+              Delete Test
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="reports.length === 0">No reports found.</p>
+  </div>
+</div>

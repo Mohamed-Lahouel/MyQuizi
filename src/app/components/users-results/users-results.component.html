@@ -1,0 +1,31 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">Users Results</h2>
+    </div>
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="border-b">
+          <th class="p-2 text-left">Username</th>
+          <th class="p-2 text-left">Email</th>
+          <th class="p-2 text-left">Score</th>
+          <th class="p-2 text-left">Action</th> <!-- New column for the View button -->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results" class="border-b">
+          <td class="p-2">{{ result.username }}</td>
+          <td class="p-2">{{ result.email }}</td>
+          <td class="p-2">{{ result.score }}%</td>
+
+          <td class="p-2 flex items-center">
+            <button (click)="viewTest(result.subscriptionId)" class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600">
+              View
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="results.length === 0">No results found.</p>
+  </div>
+</div>

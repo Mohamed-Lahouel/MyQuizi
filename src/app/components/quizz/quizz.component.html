@@ -1,0 +1,69 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col items-center p-12 bg-white shadow-2xl rounded-2xl space-y-12 max-w-screen-xl w-full">
+    <div class="flex flex-col items-center p-12 bg-white rounded-md shadow-lg w-full">
+      <span class="text-2xl font-bold text-gray-800 mb-4" *ngIf="currentQuestion">
+        Question {{ getQuestionNumber() }}
+      </span>
+
+      <span class="font-light text-gray-600 mb-8 text-xl text-center" *ngIf="currentQuestion">
+        {{ currentQuestion?.text }}
+      </span>
+
+      <div class="text-xl font-bold mb-4" *ngIf="timer >= 0">
+        Time Left: {{ timer }} seconds
+      </div>
+
+      <div *ngIf="currentQuestion">
+        <div class="flex justify-between space-x-8 mb-12 w-full">
+          <!-- Option 1 -->
+          <button
+            *ngIf="currentQuestion?.option1"
+            class="flex items-center justify-center w-60 h-60 bg-yellow-300 rounded-lg shadow-md cursor-pointer hover:bg-yellow-400"
+            [ngClass]="{ 'bg-yellow-400': isOptionChecked('option1') }"
+            (click)="selectOption('option1')"
+          >
+            <span class="text-xl text-gray-700 text-center p-6">
+              Option 1<br>{{ currentQuestion?.option1 }}
+            </span>
+          </button>
+
+          <!-- Option 2 -->
+          <button
+            *ngIf="currentQuestion?.option2"
+            class="flex items-center justify-center w-60 h-60 bg-green-300 rounded-lg shadow-md cursor-pointer hover:bg-green-400"
+            [ngClass]="{ 'bg-green-400': isOptionChecked('option2') }"
+            (click)="selectOption('option2')"
+          >
+            <span class="text-xl text-gray-700 text-center p-6">
+              Option 2<br>{{ currentQuestion?.option2 }}
+            </span>
+          </button>
+
+          <!-- Option 3 -->
+          <button
+            *ngIf="currentQuestion?.option3"
+            class="flex items-center justify-center w-60 h-60 bg-blue-300 rounded-lg shadow-md cursor-pointer hover:bg-blue-400"
+            [ngClass]="{ 'bg-blue-400': isOptionChecked('option3') }"
+            (click)="selectOption('option3')"
+          >
+            <span class="text-xl text-gray-700 text-center p-6">
+              Option 3<br>{{ currentQuestion?.option3 }}
+            </span>
+          </button>
+
+          <!-- Option 4 -->
+          <button
+            *ngIf="currentQuestion?.option4"
+            class="flex items-center justify-center w-60 h-60 bg-red-300 rounded-lg shadow-md cursor-pointer hover:bg-red-400"
+            [ngClass]="{ 'bg-red-400': isOptionChecked('option4') }"
+            (click)="selectOption('option4')"
+          >
+            <span class="text-xl text-gray-700 text-center p-6">
+              Option 4<br>{{ currentQuestion?.option4 }}
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

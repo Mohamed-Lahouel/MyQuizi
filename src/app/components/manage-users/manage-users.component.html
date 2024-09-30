@@ -1,0 +1,97 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">Manage Users</h2>
+      <button
+        (click)="navigateToAddUser()"
+        class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+      >
+        Add User
+      </button>
+    </div>
+
+    <!-- Search bar -->
+    <div class="mb-4">
+      <input
+        type="text"
+        [(ngModel)]="searchQuery"
+        (input)="searchUsers()"
+        placeholder="Search users..."
+        class="p-2 border rounded-lg w-full"
+      />
+    </div>
+
+    <div *ngIf="filteredUserList.length > 0; else noUsers">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b">
+            <th class="p-2 text-left cursor-pointer" (click)="sortUsers('username')">
+              Username <span *ngIf="sortColumn === 'username'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th class="p-2 text-left cursor-pointer" (click)="sortUsers('email')">
+              Email <span *ngIf="sortColumn === 'email'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th class="p-2 text-left cursor-pointer" (click)="sortUsers('role')">
+              Role <span *ngIf="sortColumn === 'role'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th class="p-2 text-left cursor-pointer" (click)="sortUsers('createdAt')">
+              Created At <span *ngIf="sortColumn === 'createdAt'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th class="p-2 text-left cursor-pointer" (click)="sortUsers('updatedAt')">
+              Updated At <span *ngIf="sortColumn === 'updatedAt'">{{ sortDirection === 'asc' ? '▲' : '▼' }}</span>
+            </th>
+            <th class="p-2 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of filteredUserList" class="border-b">
+            <td class="p-2">{{ user.username }}</td>
+            <td class="p-2">{{ user.email }}</td>
+            <td class="p-2">{{ user.role }}</td>
+            <td class="p-2">{{ user.createdAt }}</td>
+            <td class="p-2">{{ user.updatedAt }}</td>
+            <td class="p-2">
+              <ng-container *ngIf="user.role !== 'admin'">
+                <button
+                  (click)="changeRole(user.idUser, 'admin')"
+                  class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+                >
+                  Make Admin
+                </button>
+              </ng-container>
+
+              <ng-container *ngIf="user.role !== 'teacher'">
+                <button
+                  (click)="changeRole(user.idUser, 'teacher')"
+                  class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+                >
+                  Make Teacher
+                </button>
+              </ng-container>
+
+              <ng-container *ngIf="user.role !== 'student'">
+                <button
+                  (click)="changeRole(user.idUser, 'student')"
+                  class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+                >
+                  Make Student
+                </button>
+              </ng-container>
+
+              <button
+                (click)="deleteUser(user.idUser)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ng-template #noUsers>
+      <p>No users found.</p>
+    </ng-template>
+  </div>
+</div>

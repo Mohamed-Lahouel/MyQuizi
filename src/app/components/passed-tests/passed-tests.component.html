@@ -1,0 +1,46 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">Your Passed Tests</h2>
+      <input
+        type="text"
+        [(ngModel)]="searchTerm"
+        (input)="filterTests()"
+        placeholder="Search tests"
+        class="p-2 border border-gray-300 rounded-lg"
+      />
+    </div>
+    <table class="w-full border-collapse">
+      <thead>
+        <tr class="border-b">
+          <th class="p-2 text-left cursor-pointer" (click)="sortBy('title')">Title</th>
+          <th class="p-2 text-left cursor-pointer" (click)="sortBy('description')">Description</th>
+          <th class="p-2 text-left cursor-pointer" (click)="sortBy('score')">Score</th>
+          <th class="p-2 text-left">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let test of filteredTests" class="border-b">
+          <td class="p-2">{{ test.title }}</td>
+          <td class="p-2">{{ test.description }}</td>
+          <td class="p-2">{{ test.score }}%</td>
+          <td class="p-2 flex items-center">
+            <button
+              (click)="viewTest(test.subscriptionId)"
+              class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+            >
+              View
+            </button>
+            <button
+              (click)="reportTest(test.testId)"
+              class="bg-red-500 text-white p-2 rounded-lg hover:bg-red-600 ml-2"
+            >
+              Report
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p *ngIf="filteredTests.length === 0">No tests found.</p>
+  </div>
+</div>

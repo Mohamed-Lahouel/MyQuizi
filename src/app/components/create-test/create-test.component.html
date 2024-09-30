@@ -1,0 +1,39 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+    <!-- Left side form -->
+    <div class="flex flex-col justify-center p-8 md:p-14">
+      <span class="mb-3 text-4xl font-bold text-gray-800">Create New Test</span>
+      <span class="font-light text-gray-600 mb-8">Fill in the details below to create a new test.</span>
+
+      <form (ngSubmit)="createTest()" #testForm="ngForm">
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Title</span>
+          <input
+            type="text"
+            [(ngModel)]="testTitle"
+            name="title"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Enter test title"
+          />
+        </div>
+        <div class="py-4">
+          <span class="mb-2 text-md text-gray-700">Description</span>
+          <textarea
+            [(ngModel)]="testDescription"
+            name="description"
+            required
+            class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+            placeholder="Enter test description"
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="w-full bg-cyan-500 text-white p-2 rounded-lg mb-6 hover:bg-cyan-600"
+        >
+          Create Test
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

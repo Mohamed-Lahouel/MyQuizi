@@ -1,0 +1,94 @@
+<div class="bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="flex min-h-screen">
+    <!-- Sidebar -->
+    <div class="w-64 bg-white shadow-2xl rounded-r-2xl p-6">
+        <div class="flex items-center justify-center">
+            <img src="logo.png" alt="Logo" class="w-24 h-24 rounded-full" />
+        </div>
+        <nav class="mt-10">
+            <a routerLink="/dashboard" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+                <span class="font-medium text-gray-700">Dashboard</span>
+            </a>
+            <a routerLink="/profile" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+                <span class="font-medium text-gray-700">Profile</span>
+            </a>
+            <a routerLink="/settings" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+                <span class="font-medium text-gray-700">Settings</span>
+            </a>
+            <a routerLink="/logout" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-cyan-500 hover:text-white">
+                <span class="font-medium text-gray-700">Logout</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-10 text-gray-800">
+        <h1 class="text-4xl font-bold mb-10">Welcome to your Dashboard</h1>
+
+        <!-- Table -->
+        <div class="overflow-x-auto shadow-lg rounded-lg bg-white">
+            <table class="min-w-full bg-white border border-gray-200">
+                <thead>
+                    <tr>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            ID
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            Name
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            Email
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            Role
+                        </th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm font-semibold text-gray-600 uppercase tracking-wider">
+                            Actions
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Example row - Replace with dynamic content -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 font-medium text-gray-900">1</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">John Doe</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">johndoe&#64;example.com</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">Admin</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
+                            <button class="px-4 py-1 text-sm text-white bg-blue-500 rounded">Edit</button>
+                            <button class="px-4 py-1 text-sm text-white bg-red-500 rounded">Delete</button>
+                        </td>
+                    </tr>
+                    <!-- Additional rows would follow this structure -->
+                    <tr>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 font-medium text-gray-900">2</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">Jane Smith</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">janesmith&#64;example.com</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                            <div class="text-sm leading-5 text-gray-900">User</div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200 text-sm leading-5">
+                            <button class="px-4 py-1 text-sm text-white bg-blue-500 rounded">Edit</button>
+                            <button class="px-4 py-1 text-sm text-white bg-red-500 rounded">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+  </div>
+</div>

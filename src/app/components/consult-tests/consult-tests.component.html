@@ -1,0 +1,99 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-4xl p-6 bg-white rounded-lg shadow-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">Your Tests</h2>
+      <button
+        (click)="navigateTo('create-test')"
+        class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+      >
+        Create Test
+      </button>
+    </div>
+
+    <!-- Search Input -->
+    <div class="mb-4">
+      <input
+        [(ngModel)]="searchTerm"
+        (input)="searchTests()"
+        type="text"
+        placeholder="Search by title or description"
+        class="p-2 border border-gray-300 rounded-lg w-full"
+      />
+    </div>
+
+    <!-- Sort Options -->
+    <div class="mb-4 flex space-x-2">
+      <button
+        (click)="sortTests('title')"
+        class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+      >
+        Sort by Title
+      </button>
+      <button
+        (click)="sortTests('description')"
+        class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+      >
+        Sort by Description
+      </button>
+    </div>
+
+    <div *ngIf="userTests.length > 0; else noTests">
+      <table class="w-full border-collapse">
+        <thead>
+          <tr class="border-b">
+            <th class="p-2 text-left">Title</th>
+            <th class="p-2 text-left">Description</th>
+            <th class="p-2 text-left">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let test of filteredTests" class="border-b">
+            <td class="p-2">{{ test.title }}</td>
+            <td class="p-2">{{ test.description }}</td>
+            <td class="p-2 flex items-center">
+              <button
+                (click)="viewTest(test.testId)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+              >
+                View
+              </button>
+              <button
+                (click)="deleteTest(test.testId)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600 mx-2"
+              >
+                Delete
+              </button>
+              <button
+                *ngIf="!test.isPublished"
+                (click)="editTest(test.testId)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600 mx-2"
+              >
+                Edit
+              </button>
+              <button
+                *ngIf="!test.isPublished"
+                (click)="publishTest(test.testId)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+              >
+                Publish
+              </button>
+              <span *ngIf="test.isPublished" class="ml-2 text-white bg-cyan-500 p-2 rounded-lg border border-gray-300">
+                Code: {{ test.code }}
+              </span>
+              <button
+                *ngIf="test.isPublished"
+                (click)="checkResults(test.testId)"
+                class="bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600 ml-2"
+              >
+                Check Results
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ng-template #noTests>
+      <p>No tests found.</p>
+    </ng-template>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-2xl p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-4">Test Questions</h2>
+
+    <div *ngIf="questions.length > 0; else noQuestions">
+      <div *ngFor="let question of questions" class="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+        <p class="font-semibold mb-2">{{ question.text }}</p>
+        <ul class="list-disc pl-6">
+          <li *ngIf="question.option1">{{ question.option1 }}</li>
+          <li *ngIf="question.option2">{{ question.option2 }}</li>
+          <li *ngIf="question.option3">{{ question.option3 }}</li>
+          <li *ngIf="question.option4">{{ question.option4 }}</li>
+        </ul>
+        <p class="mt-2 text-sm text-gray-600">Correct Option: {{ question.correctOption }}</p>
+
+        <!-- Conditionally display Edit and Delete Buttons -->
+        <ng-container *ngIf="!isPublished">
+          <button
+            (click)="editQuestion(question.questionId)"
+            class="mt-2 bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600 mr-2"
+          >
+            Edit
+          </button>
+
+          <button
+            (click)="deleteQuestion(question.questionId)"
+            class="mt-2 bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+          >
+            Delete
+          </button>
+        </ng-container>
+      </div>
+    </div>
+
+    <ng-template #noQuestions>
+      <p>No questions available for this test.</p>
+    </ng-template>
+
+    <!-- Conditional Add Questions Button -->
+    <button
+      *ngIf="!isPublished"
+      (click)="navigateToAddQuestions()"
+      class="mt-4 w-full bg-cyan-500 text-white p-2 rounded-lg hover:bg-cyan-600"
+    >
+      Add Questions
+    </button>
+  </div>
+</div>

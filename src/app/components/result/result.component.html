@@ -1,0 +1,36 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-cyan-100 to-blue-100">
+  <div class="w-full max-w-2xl p-6 bg-white rounded-lg shadow-lg">
+    <h2 class="text-2xl font-bold mb-4">Test Questions</h2>
+
+    <!-- Score Display -->
+    <div *ngIf="score !== null" class="mb-4 p-4 bg-green-100 rounded-lg shadow-md">
+      <p class="text-lg font-semibold">Your Score: {{ score }}%</p>
+    </div>
+
+    <div *ngIf="questions.length > 0">
+      <div *ngFor="let question of questions" class="mb-4 p-4 bg-gray-100 rounded-lg shadow-md">
+        <p class="font-semibold mb-2">{{ question.text }}</p>
+        <ul class="list-disc pl-6">
+          <li>{{ question.option1 }}</li>
+          <li>{{ question.option2 }}</li>
+          <li>{{ question.option3 }}</li>
+          <li>{{ question.option4 }}</li>
+        </ul>
+        <p *ngIf="question.correctOption" class="mt-2 text-sm text-blue-600">Correct Answer: {{ question.correctOption }}</p>
+
+        <!-- User Answer Display -->
+        <p *ngIf="userAnswers[question.questionId]" class="mt-2 text-sm"
+          [ngClass]="{
+            'text-green-600': userAnswers[question.questionId].answer === question.correctOption,
+            'text-red-600': userAnswers[question.questionId].answer !== question.correctOption
+          }">
+          Your Answer: {{ userAnswers[question.questionId].answer }}
+          <span *ngIf="userAnswers[question.questionId].answer === question.correctOption">(Correct)</span>
+          <span *ngIf="userAnswers[question.questionId].answer !== question.correctOption">(Incorrect)</span>
+        </p>
+      </div>
+    </div>
+
+    <p *ngIf="errorMessage" class="text-red-600">{{ errorMessage }}</p>
+  </div>
+</div>
